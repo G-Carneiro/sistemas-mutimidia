@@ -2,15 +2,47 @@
 %! Date = 11/9/21
 
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[12pt, a4paper, oneside]{abntex2}
 
 % Packages
-\usepackage{import}
-\usepackage{setup/packages}
+\usepackage{../setup/packages}
+
+\input{../setup/setup.tex}
+\renewcommand{\theenumi}{\Alph*}
+\renewcommand{\theenumii}{\roman*}
 
 % Document
 \begin{document}
+    \printcoverufsc
 
+    Faça as conversões abaixo acumuladamente usando o software Audacity e responda as questões:
 
-
+    \begin{enumerate}[ref=\theenumi]
+        \item\label{item:A} Em relação ao arquivo, responda
+            \begin{enumerate}
+                \item qual é o tamanho teórico do áudio (parte de dados);
+                \item observando as propriedades do arquivo em seu sistema
+                    operacional (no linux execute du -s -B1 audio.wav),
+                    e indique quais motivos o tamanho do arquivo em disco é maior que o tamanho teórico;
+                \item qual seria o tamanho deste arquivo em disco se
+                        o seu HD fosse formatado para um tamanho de bloco de 2048 bytes?
+            \end{enumerate}
+        \item\label{item:B} Baixe taxa de amostragem para 8000Hz (sem alteração do número de bits
+            por amostra), e responda:
+            \begin{enumerate}
+                \item o tamanho teórico da mídia;
+                \item qual a frequência do maior componente frequência teórico para o novo formato do áudio;
+                \item explique o efeito que ocorreu no som e explique porque ocorreu os períodos de silêncio
+                    no áudio convertido. Lembre-se de visualizar as trilhas do som no software Audacity para
+                    responder a pergunta.
+            \end{enumerate}
+        \item\label{item:C} Após reduzir a taxa de amostragem em \ref{item:B}, reduza também o número de bits
+            por amostra pela metade (8 bits por amostra). Abra o arquivo salvo e indique em seu relatório:
+            \begin{enumerate}
+                \item o tamanho teórico da mídia;
+                \item qual a frequência do maior componente frequência teórico para o novo formato do áudio;
+                \item explique o efeito na qualidade do áudio gerada pela redução do número de bits por
+                    amostra (ouça os períodos de silêncio em \ref{item:B} e comparece com \ref{item:C}.
+            \end{enumerate}
+    \end{enumerate}
 \end{document}

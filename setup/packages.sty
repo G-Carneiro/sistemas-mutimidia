@@ -5,7 +5,7 @@
 % Exportação do pacote criado.
 % --------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{setup/packages}[2021/05/17 gabriel's Package]
+\ProvidesPackage{../setup/packages}[2021/05/17 gabriel's Package]
 
 % --------------------------------------------
 % Pacotes utilizados no documento.
@@ -22,14 +22,14 @@
 \usepackage{graphicx}                           % Plotar imagens e gráficos
 \usepackage{float}                              % Posicionamento forçado de imagens
 \usepackage{xcolor}                             % Pacote de cores
-\usepackage{helvet}                             % Fonte utilizada
+\usepackage{lmodern}                             % Fonte utilizada
 \usepackage[hyperref]{backref}                  % permissão de hyperlinks
 \usepackage[num]{abntex2cite}                   % Referências com padrão ABNT
 
 % --------------------------------------------
 % Packages configuration.
 % --------------------------------------------
-\graphicspath{{./images/}} % diretório de imagens
+\graphicspath{{../images/}} % diretório de imagens
 \citebrackets[] % citação com colchetes
 %\pagecolor{black}
 %\color{white}
@@ -99,7 +99,10 @@
             \centering
             \label{fig:logo-ufsc}
         \end{figure}
-        \ABNTEXchapterfont\MakeUppercase{\printaffil}
+        {\ABNTEXchapterfont\MakeUppercase{\printuniversity \\
+                                            \printeducationcenter \\
+                                            \printdepartment \\
+                                            \printcourse}}
 
         \vspace*{1cm}
 
@@ -108,7 +111,7 @@
 %        \vfill
         \vspace*{\fill}
 %        \begin{center}
-            \textbf{\printtitle}\printsubtitle
+            \textbf{\printtitle}%\printsubtitle
 %        \end{center}
         \vspace*{\fill}
 %        \vfill{
