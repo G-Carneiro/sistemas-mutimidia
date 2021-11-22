@@ -5,8 +5,17 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /*
-- Gabriel Medeiros Lopes Carneiro   (19103977)
-- Lorenzo Lima Franco Maturano      (19100535)
+    - Gabriel Medeiros Lopes Carneiro   (19103977)
+    - Lorenzo Lima Franco Maturano      (19100535)
+*/
+
+//  Os códigos de resolução estão logo antes de `main`.
+
+/*
+    OBS.: o item 1. da tarefa pede para reduzir pela metade a altura e largura
+    da imagem peixe.jpg, porém a imagem fornecida e usada nos demais itens foi
+    RGB1.jpg. Afim de evitar possíveis problemas ambas as imagens terão as
+    proporções reduzidas.
 */
 
 public class ImageApp   {
@@ -55,25 +64,6 @@ public class ImageApp   {
 		return img;
 	}
 
-	public static BufferedImage criaImagemCinza(BufferedImage bufferedImage) {
-        BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
-
-        WritableRaster raster = convertedImg.getRaster();
-        for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
-            for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
-                int rgb = bufferedImage.getRGB(w,h);
-                int r = (int)((rgb&0x00FF0000)>>>16); // componente vermelho
-                int g = (int)((rgb&0x0000FF00)>>>8); // componente verde
-                int b = (int)(rgb&0x000000FF); //componente azul
-
-                double y = (0.3 * r + 0.59 * g + 0.11 * b);
-
-                raster.setSample(w,h,0,y);
-            }
-
-        return convertedImg;
-    }
-	
 	public static BufferedImage criaImagemBinaria() {
 		BufferedImage img = new BufferedImage(256, 256, BufferedImage.TYPE_BYTE_BINARY);
 		WritableRaster raster = img.getRaster();
@@ -86,10 +76,42 @@ public class ImageApp   {
 		return img;
 	}
 
-	public static BufferedImage criaImagemBinaria(BufferedImage bufferedImage) {
-        BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
+	// Imprime valores dos pixeis de imagem RGB
+	public static void  imprimePixeis(BufferedImage bufferedImage) {
+		for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
+			for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
+				int rgb = bufferedImage.getRGB(w,h);
+				int r = (int)((rgb&0x00FF0000)>>>16); // componente vermelho
+				int g = (int)((rgb&0x0000FF00)>>>8); // componente verde
+				int b = (int)(rgb&0x000000FF); //componente azul
+				System.out.print("at ("+w+","+h+"): ");
+				System.out.println(r+","+g+","+b);
+			}
+	}
 
-        WritableRaster raster = convertedImg.getRaster();
+    public static BufferedImage criaImagemCinza(BufferedImage bufferedImage) {
+        BufferedImage newImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+
+        WritableRaster raster = newImg.getRaster();
+        for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
+            for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
+                int rgb = bufferedImage.getRGB(w,h);
+                int r = (int)((rgb&0x00FF0000)>>>16); // componente vermelho
+                int g = (int)((rgb&0x0000FF00)>>>8); // componente verde
+                int b = (int)(rgb&0x000000FF); //componente azul
+
+                double y = (0.3 * r + 0.59 * g + 0.11 * b);
+
+                raster.setSample(w,h,0,y);
+            }
+
+        return newImg;
+    }
+
+	public static BufferedImage criaImagemBinaria(BufferedImage bufferedImage) {
+        BufferedImage newImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
+
+        WritableRaster raster = newImg.getRaster();
         for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
             for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
                 int rgb = bufferedImage.getRGB(w,h);
@@ -106,13 +128,13 @@ public class ImageApp   {
                 }
             }
 
-        return convertedImg;
+        return newImg;
     }
 
     public static BufferedImage criaImagemR(BufferedImage bufferedImage) {
-        BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        BufferedImage newImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
 
-        WritableRaster raster = convertedImg.getRaster();
+        WritableRaster raster = newImg.getRaster();
         for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
             for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
                 int rgb = bufferedImage.getRGB(w,h);
@@ -121,13 +143,13 @@ public class ImageApp   {
                 raster.setSample(w,h,0,r);
             }
 
-        return convertedImg;
+        return newImg;
     }
 
     public static BufferedImage criaImagemG(BufferedImage bufferedImage) {
-        BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        BufferedImage newImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
 
-        WritableRaster raster = convertedImg.getRaster();
+        WritableRaster raster = newImg.getRaster();
         for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
             for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
                 int rgb = bufferedImage.getRGB(w,h);
@@ -136,13 +158,13 @@ public class ImageApp   {
                 raster.setSample(w,h,0,g);
             }
 
-        return convertedImg;
+        return newImg;
     }
 
     public static BufferedImage criaImagemB(BufferedImage bufferedImage) {
-        BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        BufferedImage newImg = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
 
-        WritableRaster raster = convertedImg.getRaster();
+        WritableRaster raster = newImg.getRaster();
         for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
             for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
                 int rgb = bufferedImage.getRGB(w,h);
@@ -151,13 +173,13 @@ public class ImageApp   {
                 raster.setSample(w,h,0,b);
             }
 
-        return convertedImg;
+        return newImg;
     }
 
-    public static BufferedImage reduzResolucao(BufferedImage bufferedImage) {
-        BufferedImage convertedImg = new BufferedImage(bufferedImage.getWidth()/2, bufferedImage.getHeight()/2, BufferedImage.TYPE_INT_RGB);
+    public static BufferedImage metadeResolucao(BufferedImage bufferedImage) {
+        BufferedImage newImg = new BufferedImage(bufferedImage.getWidth()/2, bufferedImage.getHeight()/2, BufferedImage.TYPE_INT_RGB);
 
-        WritableRaster raster = convertedImg.getRaster();
+        WritableRaster raster = newImg.getRaster();
         for(int h=0;h<bufferedImage.getHeight();h+=2) //Percorre a horizontal
             for(int w=0;w<bufferedImage.getWidth();w+=2) {//Percorre a vertical
                 int rgb = bufferedImage.getRGB(w,h);
@@ -170,25 +192,13 @@ public class ImageApp   {
                 raster.setSample(w/2,h/2,2,b);
             }
 
-        return convertedImg;
+        return newImg;
     }
-	
-	// Imprime valores dos pixeis de imagem RGB
-	public static void  imprimePixeis(BufferedImage bufferedImage) {
-		for(int h=0;h<bufferedImage.getHeight();h++) //Percorre a horizontal
-			for(int w=0;w<bufferedImage.getWidth();w++) {//Percorre a vertical
-				int rgb = bufferedImage.getRGB(w,h);
-				int r = (int)((rgb&0x00FF0000)>>>16); // componente vermelho
-				int g = (int)((rgb&0x0000FF00)>>>8); // componente verde
-				int b = (int)(rgb&0x000000FF); //componente azul
-				System.out.print("at ("+w+","+h+"): ");
-				System.out.println(r+","+g+","+b);
-			}
-	}
 
 	public static void main(String[] args) {
 		ImageApp ia = new ImageApp();
 		BufferedImage imgJPEG = loadImage("https://www.inf.ufsc.br/~roberto.willrich/INE5431/RGB1.jpg");
+		BufferedImage peixeJPEG = loadImage("https://www.inf.ufsc.br/~roberto.willrich/INE5431/peixe.jpg");
 // 		BufferedImage imgRGB = criaImagemRGB();
 // 		BufferedImage imgCinza = criaImagemCinza();
 // 		BufferedImage imgBinaria = criaImagemBinaria();
@@ -198,7 +208,8 @@ public class ImageApp   {
         BufferedImage imgR = criaImagemR(imgJPEG);
         BufferedImage imgG = criaImagemG(imgJPEG);
         BufferedImage imgB = criaImagemB(imgJPEG);
-        BufferedImage imgMetadeResolucao = reduzResolucao(imgJPEG);
+        BufferedImage imgMetadeResolucao = metadeResolucao(imgJPEG);
+        BufferedImage peixeMetadeResolucao = metadeResolucao(peixeJPEG);
 
 // 		ia.apresentaImagem(new JFrame("imgJPEG"), imgJPEG);
 // 		ia.apresentaImagem(new JFrame("imgRGB"), imgRGB);
@@ -206,7 +217,9 @@ public class ImageApp   {
 // 		ia.apresentaImagem(new JFrame("imgBinaria"), imgBinaria);
 
         // 1 - Reduza de 1/2 a resolução da imagem peixe.jpg e apresente esta imagem.
+        // OBS.: Olhar cabeçalho do arquivo.
         ia.apresentaImagem(new JFrame("imgMetadeResolucao"), imgMetadeResolucao);
+        ia.apresentaImagem(new JFrame("peixeMetadeResolucao"), peixeMetadeResolucao);
 
         // 2 - Transforme a imagem RGB1.jpg em tons de cinza e a apresente.
         ia.apresentaImagem(new JFrame("imgCinza"), imgCinza);
