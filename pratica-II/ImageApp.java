@@ -199,9 +199,6 @@ public class ImageApp   {
 		ImageApp ia = new ImageApp();
 		BufferedImage imgJPEG = loadImage("https://www.inf.ufsc.br/~roberto.willrich/INE5431/RGB1.jpg");
 		BufferedImage peixeJPEG = loadImage("https://www.inf.ufsc.br/~roberto.willrich/INE5431/peixe.jpg");
-// 		BufferedImage imgRGB = criaImagemRGB();
-// 		BufferedImage imgCinza = criaImagemCinza();
-// 		BufferedImage imgBinaria = criaImagemBinaria();
 
         BufferedImage imgBinaria = criaImagemBinaria(imgJPEG);
         BufferedImage imgCinza = criaImagemCinza(imgJPEG);
@@ -210,11 +207,6 @@ public class ImageApp   {
         BufferedImage imgB = criaImagemB(imgJPEG);
         BufferedImage imgMetadeResolucao = metadeResolucao(imgJPEG);
         BufferedImage peixeMetadeResolucao = metadeResolucao(peixeJPEG);
-
-// 		ia.apresentaImagem(new JFrame("imgJPEG"), imgJPEG);
-// 		ia.apresentaImagem(new JFrame("imgRGB"), imgRGB);
-// 		ia.apresentaImagem(new JFrame("imgCinza"), imgCinza);
-// 		ia.apresentaImagem(new JFrame("imgBinaria"), imgBinaria);
 
         // 1 - Reduza de 1/2 a resolução da imagem peixe.jpg e apresente esta imagem.
         // OBS.: Olhar cabeçalho do arquivo.
@@ -242,7 +234,5 @@ public class ImageApp   {
         ia.apresentaImagem(new JFrame("imgR"), imgR);
         ia.apresentaImagem(new JFrame("imgG"), imgG);
         ia.apresentaImagem(new JFrame("imgB"), imgB);
-               
-// 		imprimePixeis(imgJPEG);
 	}
 }
