@@ -5,6 +5,7 @@
 \documentclass[12pt, a4paper, oneside]{abntex2}
 
 % Packages
+\usepackage{amsmath}
 \usepackage{../setup/packages}
 
 \input{../setup/setup.tex}
@@ -15,34 +16,82 @@
 \begin{document}
     \printcoverufsc
 
+    Sabendo que o arquivo audio.wav possui (44.1KHz, 16 bits/amostra, mono) como características.
     Faça as conversões abaixo acumuladamente usando o software Audacity e responda as questões:
 
     \begin{enumerate}[ref=\theenumi]
         \item\label{item:A} Em relação ao arquivo, responda
-            \begin{enumerate}
+            \begin{enumerate}[ref=\theenumi.\theenumii]
                 \item qual é o tamanho teórico do áudio (parte de dados);
-                \item observando as propriedades do arquivo em seu sistema
+                    \[
+                    \begin{matrix}
+                        \text{tamanho\_teórico} & = & \dfrac{\text{num\_canais} \cdot \text{amostras/s} \cdot \text{bits/amostra} \cdot \text{duração}}{8} \\ \\
+                        & = &   \dfrac{1 \cdot 44100 \cdot 16 \cdot 20}{8} \\ \\
+                        & = &   1764000\text{B}
+                    \end{matrix}
+                    \]
+                \item\label{subitem:ii} observando as propriedades do arquivo em seu sistema
                     operacional (no linux execute du -s -B1 audio.wav),
                     e indique quais motivos o tamanho do arquivo em disco é maior que o tamanho teórico;
-                \item qual seria o tamanho deste arquivo em disco se
-                        o seu HD fosse formatado para um tamanho de bloco de 2048 bytes?
+                    \begin{itemize}
+                        \item O arquivo não é formado somente de dados, há também metadados que ocupam espaço de disco.
+                        \item A diferença também se deve ao fato de que o sistema operacional só aloca múltiplos do tamanho do bloco, se os dados não ocupam todo o bloco haverá desperdício.
+                    \end{itemize}
+                \item qual seria o tamanho deste arquivo em disco se o seu HD fosse formatado para um tamanho de bloco de 2048 bytes?
+
+                    \[
+                        \begin{matrix}
+                            \text{tamanho} & = & \left\lceil \dfrac{\text{tamanho\_arquivo}}{tamanho\_bloco} \right\rceil \cdot \text{tamanho\_bloco}  \\ \\
+                            & = & \left\lceil \dfrac{1764000}{2048} \right\rceil \cdot 2048  \\ \\
+                            & = &   862 \cdot 2048 \\ \\
+                            & = &   1765376\text{B}
+                        \end{matrix}
+                    \]
+                    Esse valor é o mesmo que foi obtido no item \ref{subitem:ii}, quando foram observadas as propriedades do arquivo no sistema operacional.
+
             \end{enumerate}
         \item\label{item:B} Baixe taxa de amostragem para 8000Hz (sem alteração do número de bits
             por amostra), e responda:
             \begin{enumerate}
                 \item o tamanho teórico da mídia;
+                    \[
+                        \begin{matrix}
+                            \text{tamanho\_teórico} & = & \dfrac{\text{num\_canais} \cdot \text{amostras/s} \cdot \text{bits/amostra} \cdot \text{duração}}{8} \\ \\
+                            & = &   \dfrac{1 \cdot 8000 \cdot 16 \cdot 20}{8} \\ \\
+                            & = &   320000\text{B}
+                        \end{matrix}
+                    \]
+
                 \item qual a frequência do maior componente frequência teórico para o novo formato do áudio;
-                \item explique o efeito que ocorreu no som e explique porque ocorreu os períodos de silêncio
-                    no áudio convertido. Lembre-se de visualizar as trilhas do som no software Audacity para
+
+                    Segundo o Teorema de Nyquist, a frequência do maior componente frequência teórico é metade da taxa de amostragem. Logo,
+                    \[
+                        \dfrac{8000}{2} = 4000\text{Hz}
+                    \]
+                \item explique o efeito que ocorreu no som e explique porque ocorreu os períodos de silêncio no áudio convertido. Lembre-se de visualizar as trilhas do som no software Audacity para
                     responder a pergunta.
+
+                    Como a taxa de amostragem foi reduzida, a maior componente de frequência também sofreu redução, como visto no item anterior. Portanto, as frequências acima desse limite foram convertidas em momentos de silêncio nesse novo processamento do áudio.
             \end{enumerate}
-        \item\label{item:C} Após reduzir a taxa de amostragem em \ref{item:B}, reduza também o número de bits
-            por amostra pela metade (8 bits por amostra). Abra o arquivo salvo e indique em seu relatório:
+        \item\label{item:C} Após reduzir a taxa de amostragem em \ref{item:B}, reduza também o número de bits por amostra pela metade (8 bits por amostra). Abra o arquivo salvo e indique em seu relatório:
             \begin{enumerate}
                 \item o tamanho teórico da mídia;
+                \[
+                    \begin{matrix}
+                        \text{tamanho\_teórico} & = & \dfrac{\text{num\_canais} \cdot \text{amostras/s} \cdot \text{bits/amostra} \cdot \text{duração}}{8} \\ \\
+                        & = &   \dfrac{1 \cdot 8000 \cdot 8 \cdot 20}{8} \\ \\
+                        & = &   160000\text{B}
+                    \end{matrix}
+                \]
+
                 \item qual a frequência do maior componente frequência teórico para o novo formato do áudio;
+
+                    Como a taxa de amostragem permanece igual ao processamento feito no item \ref{item:B}, a frequência do maior componente frequência continua sendo 4000Hz.
+
                 \item explique o efeito na qualidade do áudio gerada pela redução do número de bits por
                     amostra (ouça os períodos de silêncio em \ref{item:B} e comparece com \ref{item:C}.
+
+                    Ao reduzir o número de bits por amostra, os ruídos de quatização aumentam. Durante os momentos de silêncio esse aumento no nível de ruído fica mais claro.
             \end{enumerate}
     \end{enumerate}
 \end{document}
