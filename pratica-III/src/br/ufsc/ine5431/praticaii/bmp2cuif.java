@@ -44,8 +44,8 @@ public class bmp2cuif {
 	    	
 	    	// Criação de do arquivo Cuif1 a partir da leutura do arquivo lena.bmp
 	    	// modifique numero_estudantes e id_estudante indicando o número de membros da equipe e a matrícula dos membros
-	    	int numero_de_estudantes = 1;
-	    	int[] id_estudante = {16208812}; 
+	    	int numero_de_estudantes = 2;
+	    	int[] id_estudante = {19103977, 19100535};
 	    	Cuif filecuif = new Cuif(bmpimg,1, numero_de_estudantes,id_estudante);
 	    	filecuif.save(outputFile);
 

@@ -255,9 +255,9 @@ public class Bitmap {
    	 	for (int i=0; i<height; i++){
    	   	 	for (int j=width-1; j>=0; j--){
 	 		 	System.out.println("raster["+i+","+j+"]");
-	 			bitmapfile[k++] = (byte)raster[i][j][0]; // escreve componente R
+	 			bitmapfile[k++] = (byte)raster[i][j][2]; // escreve componente R
 	 		 	bitmapfile[k++] = (byte)raster[i][j][1]; // escreve componente G
-	 		 	bitmapfile[k++] = (byte)raster[i][j][2]; // escreve componente B
+	 		 	bitmapfile[k++] = (byte)raster[i][j][0]; // escreve componente B
 	 		}
 	 	}
    	}
