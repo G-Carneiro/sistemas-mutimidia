@@ -7,7 +7,7 @@
  *  
  */
 
-package br.ufsc.ine5431.praticaii;
+// package br.ufsc.ine5431.praticaii;
 
 public class cuif2bmp {
    
