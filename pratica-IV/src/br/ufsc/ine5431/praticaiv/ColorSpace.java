@@ -16,9 +16,9 @@ public class ColorSpace {
 
 		/* ycbcr é um array onde elemento [0] mantem o valor de y, [1] o valor de Cb, e [2] o valor de Cr.*/ 
 		double ycbcr[] = new double[3];  
-		ycbcr[0] = r;
-		ycbcr[1] = g;
-		ycbcr[2] = b;
+		ycbcr[0] = 0.299 * r + 0.587 * g + 0.114 * b;
+		ycbcr[1] = (-0.299 * r - 0.587 * g + 0.886 * b) / 1.772;
+		ycbcr[2] = (0.701 * r - 0.587 * g - 0.114 * b) / 1.402;
 		
 		/** 
 			TODO!
