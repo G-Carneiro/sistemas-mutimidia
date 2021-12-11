@@ -1,0 +1,42 @@
+%! Author = gabriel
+%! Date = 11/9/21
+
+% Preamble
+\documentclass[12pt, a4paper, oneside]{abntex2}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{../setup/packages}
+
+\input{../setup/setup.tex}
+
+% Document
+\begin{document}
+    \printcoverufsc
+
+    \begin{enumerate}
+        \item O CUI.2 implementa alguma compressão na imagem bmp?
+                Justifique sua resposta.
+
+        \item Indique o PSNR medindo a perda de qualidade das imagens obtidas a partir dos arquivosCUIF.1 (lena1.bmp) e CUIF2 (lena2.bmp) com a imagem original (lena.bmp).
+            Há perdas nos dados da imagem na conversão RGB → YCbCr → RGB? Se houver perda de qualidade na conversão, explique a fonte desta perda.
+
+        \item Informe a taxa de compressão obtida pelo CUIF.1 e pelo CUIF.3 (que usa codificação deHuffman) para a imagem lena.bmp (razão entre o arquivo bmp e o arquivo cuif).
+            Observando o histograma e a tabela de codificação de Huffman (impressa quando utilizada o comando bmp2 cuif -v 3), indique o símbolo que ocorre mais e o símbolo que ocorre menos neste arquivo (visto no histograma) e a codificação de Huffman para estes símbolos (visto na tabela de codificação de Huffman).
+
+        \item Indique o PSNR comparando a imagem original lena.bmp com a imagem obtida a partir doarquivo CUIF.3 (lena3.bmp).
+            Há perdas nos dados da imagem?
+            Explique porquê.
+
+        \item Qual a taxa de compressão obtida pelo CUIF.4 (lena4.cuif) para a imagem lena.bmp?
+                Para esta imagem, qual técnica de compressão obteve maior taxa de compressão?
+                Codificação de Huffman ou RLE?
+
+        \item Indique a PSNR das codificações CUIF.4 (erro do lena4.bmp em relação à lena.bmp).Compare o valor obtido com a PSNR do CUIF3 e justifique os resultados.
+
+        \item Codifique as imagens lena.bmp e lena.bmp usando CUIF.4. Qual imagem obteve maior compressão?
+                Explique porquê.
+
+
+    \end{enumerate}
+\end{document}
