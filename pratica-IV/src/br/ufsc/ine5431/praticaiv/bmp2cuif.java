@@ -44,8 +44,8 @@ public class bmp2cuif {
 	    	//	bmpimg.printHeader();
 	    	
 	    	// modifique numero_estudantes e id_estudante indicando o número de membros da equipe e a matrícula dos membros
-	    	int numero_de_estudantes = 1;
-	    	int[] id_estudante = {12100757}; 
+	    	int numero_de_estudantes = 2;
+	    	int[] id_estudante = {19103977, 19100535};
 	    	
 	    	// Geração e salvamento do arquivo CUIF
 	    	Cuif cuiffile = new Cuif(bmpimg, version, numero_de_estudantes,id_estudante);
