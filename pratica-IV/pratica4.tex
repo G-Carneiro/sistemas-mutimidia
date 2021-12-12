@@ -31,6 +31,14 @@
         \item \textbf{Informe a taxa de compressão obtida pelo CUIF.1 e pelo CUIF.3 (que usa codificação de Huffman) para a imagem lena.bmp (razão entre o arquivo bmp e o arquivo cuif).
         Observando o histograma e a tabela de codificação de Huffman (impressa quando utilizada o comando bmp2cuif -v 3), indique o símbolo que ocorre mais e o símbolo que ocorre menos neste arquivo (visto no histograma) e a codificação de Huffman para estes símbolos (visto na tabela de codificação de Huffman).}
 
+            lena.bmp = 196,662 B. \\
+            lena1.cuif = 196,628 B. \\
+            lena3.cuif = 170,413 B. \\
+            compressão CUIF.1 =$\frac{196,662}{196,628} \approx 1$. \\
+            compressão CUIF.3 =$\frac{196,662}{170,413} \approx 1.15$. \\
+            O símbolo que mais ocorre é 161, sua codificação é 000000. \\
+            O símbolo que menos ocorre é 189, sua codificação é 1111111111.
+
         \item \textbf{Indique o PSNR comparando a imagem original lena.bmp com a imagem obtida a partir do arquivo CUIF.3 (lena3.bmp).
         Há perdas nos dados da imagem?
         Explique porquê.}
