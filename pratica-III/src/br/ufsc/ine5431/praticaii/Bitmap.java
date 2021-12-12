@@ -1,4 +1,4 @@
-// package br.ufsc.ine5431.praticaii;
+package br.ufsc.ine5431.praticaii;
 
 import java.io.*;
 import java.io.IOException;

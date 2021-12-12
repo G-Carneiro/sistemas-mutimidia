@@ -1,0 +1,4 @@
+./src/br/ufsc/ine5431/praticaii/Cuif.java
+./src/br/ufsc/ine5431/praticaii/bmp2cuif.java
+./src/br/ufsc/ine5431/praticaii/cuif2bmp.java
+./src/br/ufsc/ine5431/praticaii/Bitmap.java
