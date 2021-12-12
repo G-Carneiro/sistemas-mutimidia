@@ -1,0 +1,53 @@
+%! Author = gabriel
+%! Date = 11/9/21
+
+% Preamble
+\documentclass[12pt, a4paper, oneside]{abntex2}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{../setup/packages}
+
+\input{../setup/setup.tex}
+
+% Document
+\begin{document}
+    \printcoverufsc
+
+    \begin{enumerate}
+        \item Abra o arquivo lena.bmp no editor hexadecimal em \href{https://hexed.it/}{https://hexed.it/} e, analisando o formato do cabeçalho BMP apresentado sa Seção 2, indique no relatório: qual é o valor dos campos \textit{offset} e \textit{tamanho do arquivo}?
+            Qual é o tamanho do cabeçalho deste arquivo?
+            Quais são os valores dos componentes de cor (RGB) do segundo pixel armazenado no arquivo (na visualização da imagem, seria segundo píxel da última linha da imagem)?
+
+            \begin{itemize}
+                \item Offset: 0x36000000.
+                \item Tamanho do arquivo: 786486 bytes, de acordo com o hexed.
+                \item Tamanho do cabeçalho: 54 bytes.
+                \item Valores RGB: 0x521639.
+            \end{itemize}
+
+        \item Corrigir é o erro no código para que a imagem decodificada seja igual a imagem original.
+            O código corrigido deve ser entregue.
+            Dica: o erro está na operação de converter a parte de dados (raster) da imagem CUIF.1 para a parte de dados (raster) do arquivo BMP que está no arquivoBitmap.java, método cuif1toRaster(linha 221).
+
+            Feito.
+
+        \item Qual é o tamanho do cabeçalho do arquivo lena.cuif?
+
+                12 bytes, se não considerarmos os identificadores dos alunos como parte do cabeçalho.
+                20 bytes, caso seja considerado.
+
+        \item Há perdas nos dados da imagem na conversãobmp → cuif(CUI.1) → bmp?
+                Justifique sua resposta.
+
+                Não.
+                O que foi feito é representar a mesma informação em outro formato (BGR ou RGB), sem compressão.
+                Os arquivos possuem até o mesmo tamanho.
+
+        \item Qual é a vantagem de organizar os pixels nesta sequência definida pelo CUIF.1 (primeiro os valores de R, depois de G e finalmente de B) para a compressão baseada em RLE ou DPCM? Dica: relembre os princípios da compressão RLE e DPCM e compare a parte de dados de imagem do arquivo lena.bmp e lena.cuif no editor hexadecimal.
+
+                Como no CUIF cada canal RGB completos em sequência, ao contrário do BMP onde cada pixel possui um canal BGR, há mais chance de se ter valores iguais ou semelhantes próximos.
+                Geralmente pixels vizinhos tem alta taxa de semelhança.
+                Isso é excelente para compressão baseada nesses métodos.
+    \end{enumerate}
+\end{document}

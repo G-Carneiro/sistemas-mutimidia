@@ -1,0 +1,72 @@
+%! Author = gabriel
+%! Date = 11/9/21
+
+% Preamble
+\documentclass[12pt, a4paper, oneside]{abntex2}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{../setup/packages}
+
+\input{../setup/setup.tex}
+
+% Document
+\begin{document}
+    \printcoverufsc
+
+    \begin{enumerate}
+        \item \textbf{O CUI.2 implementa alguma compressão na imagem bmp?
+                Justifique sua resposta.}
+
+                Não, o domínio é apenas alterado de RBG para YCbCr.
+
+        \item \textbf{Indique o PSNR medindo a perda de qualidade das imagens obtidas a partir dos arquivosCUIF.1 (lena1.bmp) e CUIF2 (lena2.bmp) com a imagem original (lena.bmp).
+        Há perdas nos dados da imagem na conversão RGB → YCbCr → RGB? Se houver perda de qualidade na conversão, explique a fonte desta perda.}
+
+                PSNR(lena.bmp, lena1.bmp) = $\infty$ dB. \\
+                PSNR(lena.bmp, lena2.bmp) $\approx$ 24.7 dB. \\
+                Há perdas na conversão.
+                Isso se deve ao fato de se utilizar operações de ponto flutuante nas conversões, causando pequenos erros que vão se acumulando.
+
+        \item \textbf{Informe a taxa de compressão obtida pelo CUIF.1 e pelo CUIF.3 (que usa codificação de Huffman) para a imagem lena.bmp (razão entre o arquivo bmp e o arquivo cuif).
+        Observando o histograma e a tabela de codificação de Huffman (impressa quando utilizada o comando bmp2cuif -v 3), indique o símbolo que ocorre mais e o símbolo que ocorre menos neste arquivo (visto no histograma) e a codificação de Huffman para estes símbolos (visto na tabela de codificação de Huffman).}
+
+            lena.bmp = 196,662 B. \\
+            lena1.cuif = 196,628 B. \\
+            lena3.cuif = 170,413 B. \\
+            compressão CUIF.1 =$\frac{196,662}{196,628} \approx 1$. \\
+            compressão CUIF.3 =$\frac{196,662}{170,413} \approx 1.15$. \\
+            O símbolo que mais ocorre é 161, sua codificação é 000000. \\
+            O símbolo que menos ocorre é 189, sua codificação é 1111111111.
+
+        \item \textbf{Indique o PSNR comparando a imagem original lena.bmp com a imagem obtida a partir do arquivo CUIF.3 (lena3.bmp).
+        Há perdas nos dados da imagem?
+        Explique porquê.}
+
+        PSNR(lena.bmp, lena3.bmp) $\approx$ 24.7 dB. \\
+        Há perdas nos dados.
+        Mesmo que a codificação de Huffman seja uma forma de compactação sem perdas, a imagem foi convertida de RGB para YCbCr, logo tem o mesmo motivo de perda da questão 2.
+
+        \item \textbf{Qual a taxa de compressão obtida pelo CUIF.4 (lena4.cuif) para a imagem lena.bmp?
+        Para esta imagem, qual técnica de compressão obteve maior taxa de compressão?
+        Codificação de Huffman ou RLE?}
+
+        lena.bmp = 196,662 B. \\
+        lena4.cuif = 192,386 B. \\
+        compressão CUIF.4 =$\frac{196,662}{192,386} \approx 1.02$. \\
+        Para essa imagem a codificação de Huffman obteve maior taxa de compressão.
+
+        \item \textbf{Indique a PSNR das codificações CUIF.4 (erro do lena4.bmp em relação à lena.bmp). Compare o valor obtido com a PSNR do CUIF3 e justifique os resultados.}
+
+        PSNR(lena.bmp, lena4.bmp) $\approx 51.15$ dB. \\
+        O RLE implementado gera muitos erros para números ímpares que não são repetidos em sequência, ao contrário da codificação de Huffman, que somente se aproveita da quantidade de vezes em que cada símbolo aparece.
+
+        \item \textbf{Codifique as imagens lena.bmp e lena.bmp usando CUIF.4. Qual imagem obteve maior compressão?
+        Explique porquê.}
+
+        \textbf{Observação:} vamos assumir que devemos comparar as imagens lena.bmp e JazzMan.bmp, já que o enunciado pede para comparar a mesma imagem. \\
+        compressão JazzMan =$\frac{196,662}{115,463} \approx 1.70$. \\
+        A imagem JazzMan obteve maior compressão, pois possui mais símbolos repetidos em sequência.
+        Provavelmente ela foi feita digitalmente, por isso possui menor variabilidade de cores, ao contrário de uma fotografia, melhorando a compressão.
+    \end{enumerate}
+\end{document}
