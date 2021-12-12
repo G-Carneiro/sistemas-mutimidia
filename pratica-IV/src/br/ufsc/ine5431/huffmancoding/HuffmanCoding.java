@@ -33,7 +33,7 @@ public final class HuffmanCoding {
 	   	 	if (maxsize<20000)
 	   	 		maxsize=20000;
 	   	 	
-			ByteBuffer buf = ByteBuffer.allocate(maxsize); // prevendo taxa de compressão de 3x.
+			ByteBuffer buf = ByteBuffer.allocate(maxsize); // prevendo taxa de compressÃ£o de 3x.
 			OutputStream out = new ByteBufferBackedOutputStream(buf);
 
 
@@ -59,7 +59,7 @@ public final class HuffmanCoding {
 		FrequencyTable freqs = getFrequencies(in);
 		freqs.increment(256);  // EOF symbol gets a frequency of 1
 		CodeTree code = freqs.buildCodeTree();
-		System.out.println("Tabela de codificação de Huffman");
+		System.out.println("Tabela de codificaÃ§Ã£o de Huffman");
 		System.out.println(code.toString());
 		CanonicalCode canonCode = new CanonicalCode(code, 257);
 		// Replace code tree with canonical one. For each symbol,

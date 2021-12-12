@@ -61,7 +61,7 @@ public final class PSNR {
 				 for (int p=0;p<3;p++) {  //percorre componentes R, G e B
 // 					 System.out.println("Original Componente [" +p+ "] em [" +i+","+j+"]:"+original[i][j][p]);
 // 					 System.out.println("Decodificado Componente ["+p+"] em ["+i+","+j+"]:"+decodificado[i][j][p]);
-                     squareError += Math.pow(original[i][j][p] - decodificado[i][j][p], 2)
+                     squareError += Math.pow(original[i][j][p] - decodificado[i][j][p], 2);
 				 } 
 			 }
 		 } 
