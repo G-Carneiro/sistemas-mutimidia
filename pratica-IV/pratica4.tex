@@ -51,7 +51,15 @@
         Para esta imagem, qual técnica de compressão obteve maior taxa de compressão?
         Codificação de Huffman ou RLE?}
 
-        \item \textbf{Indique a PSNR das codificações CUIF.4 (erro do lena4.bmp em relação à lena.bmp).Compare o valor obtido com a PSNR do CUIF3 e justifique os resultados.}
+        lena.bmp = 196,662 B. \\
+        lena4.cuif = 192,386 B. \\
+        compressão CUIF.4 =$\frac{196,662}{192,386} \approx 1.02$. \\
+        Para essa imagem a codificação de Huffman obteve maior taxa de compressão.
+
+        \item \textbf{Indique a PSNR das codificações CUIF.4 (erro do lena4.bmp em relação à lena.bmp). Compare o valor obtido com a PSNR do CUIF3 e justifique os resultados.}
+
+        PSNR(lena.bmp, lena4.bmp) $\approx 51.15$ dB. \\
+        O RLE implementado gera muitos erros para números ímpares que não são repetidos em sequência, ao contrário da codificação de Huffman, que somente se aproveita da quantidade de vezes em que cada símbolo aparece.
 
         \item \textbf{Codifique as imagens lena.bmp e lena.bmp usando CUIF.4. Qual imagem obteve maior compressão?
         Explique porquê.}
