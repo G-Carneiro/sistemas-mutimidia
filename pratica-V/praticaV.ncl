@@ -2,7 +2,7 @@
 	<head>
 		<connectorBase id="connBaseId">
 			<causalConnector id="onEndStart">
-				<simpleCondition role="onEnd">
+				<simpleCondition max="unbounded" qualifier="and" role="onEnd">
 				</simpleCondition>
 				<simpleAction max="unbounded" role="start">
 				</simpleAction>
