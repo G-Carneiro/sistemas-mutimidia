@@ -8,6 +8,7 @@
 				<simpleAction role="start" max="unbounded"/>
 			</causalConnector>
 		</connectorBase>
+
 		<regionBase id="regionBase0">
 			<region id="rgTV" left="0.00%" top="0.00%" width="100.00%" height="100.00%" zIndex="1">
 				<region id="regionL" left="0.00%" top="20.00%" width="100.00%" height="10.00%" zIndex="1"/>
@@ -15,50 +16,60 @@
 				<region id="regionR2" left="51.00%" top="35.00%" width="49.00%" height="65.00%" zIndex="1"/>
 			</region>
 		</regionBase>
+
 		<descriptorBase id="descriptorBase1">
-			<descriptor id="descriptorImagem2" region="regionR2" explicitDur="5s"/>
+			<descriptor id="descriptorImage2" region="regionR2" explicitDur="5s"/>
 			<descriptor id="descriptorVideo2" region="regionR1" explicitDur="5s"/>
 			<descriptor id="descriptorVideo1" region="regionR1" explicitDur="5s"/>
-			<descriptor id="descriptorImagem1" region="regionR1" explicitDur="5s"/>
-			<descriptor id="descriptorLegenda2" region="regionL" explicitDur="12s">
+			<descriptor id="descriptorImage1" region="regionR1" explicitDur="5s"/>
+
+			<descriptor id="descriptorSubtitle2" region="regionL" explicitDur="12s">
 				<descriptorParam name="fit" value="fill"/>
 				<descriptorParam name="fontColor" value="white"/>
 			</descriptor>
-			<descriptor id="descriptorLegenda1" region="regionL" explicitDur="8s">
+
+			<descriptor id="descriptorSubtitle1" region="regionL" explicitDur="8s">
 				<descriptorParam name="fit" value="fill"/>
 				<descriptorParam name="fontColor" value="white"/>
 			</descriptor>
+
 			<descriptor id="descriptorAudio2" explicitDur="10s"/>
 			<descriptor id="descriptorAudio1" explicitDur="8s"/>
 		</descriptorBase>
 	</head>
 	<body id="myBodyID">
-		<media id="imagem1" src="media/imagem1.jpg" type="image/jpeg" descriptor="descriptorImagem1"/>
-		<media id="imagem2" src="media/imagem2.gif" type="image/gif" descriptor="descriptorImagem2"/>
+		<media id="image1" src="media/imagem1.jpg" type="image/jpeg" descriptor="descriptorImage1"/>
+		<media id="image2" src="media/imagem2.gif" type="image/gif" descriptor="descriptorImage2"/>
 		<media id="video1" src="media/video1.mpg" type="video/mpeg" descriptor="descriptorVideo1"/>
 		<media id="video2" src="media/video2.mpg" type="video/mpeg" descriptor="descriptorVideo2"/>
 		<media id="audio1" src="media/audio1.mp3" type="audio/mp3" descriptor="descriptorAudio1"/>
 		<media id="audio2" src="media/audio2.mp3" type="audio/mp3" descriptor="descriptorAudio2"/>
-		<media id="legenda1" src="media/legenda1.txt" type="text/plain" descriptor="descriptorLegenda1"/>
-		<media id="legenda2" src="media/legenda2.txt" type="text/plain" descriptor="descriptorLegenda2"/>
+		<media id="subtitle1" src="media/legenda1.txt" type="text/plain" descriptor="descriptorSubtitle1"/>
+		<media id="subtitle2" src="media/legenda2.txt" type="text/plain" descriptor="descriptorSubtitle2"/>
+
 		<port id="port1" component="video1"/>
 		<port id="port2" component="audio1"/>
-		<port id="port3" component="legenda1"/>
+		<port id="port3" component="subtitle1"/>
+
 		<link id="link1" xconnector="onEndStart">
 			<bind role="onEnd" component="video1"/>
-			<bind role="start" component="imagem1"/>
+			<bind role="start" component="image1"/>
 		</link>
+
 		<link id="link2" xconnector="onEndStart">
-			<bind role="onEnd" component="imagem1"/>
-			<bind role="start" component="imagem2"/>
+			<bind role="onEnd" component="image1"/>
+			<bind role="start" component="image2"/>
 			<bind role="start" component="audio2"/>
 		</link>
+
 		<link id="link3" xconnector="onEndStart">
-			<bind role="onEnd" component="legenda1"/>
-			<bind role="start" component="legenda2"/>
+			<bind role="onEnd" component="audio1"/>
+			<bind role="onEnd" component="subtitle1"/>
+			<bind role="start" component="subtitle2"/>
 		</link>
+
 		<link id="link4" xconnector="onEndStart">
-			<bind role="onEnd" component="imagem2"/>
+			<bind role="onEnd" component="image2"/>
 			<bind role="start" component="video2"/>
 		</link>
 	</body>

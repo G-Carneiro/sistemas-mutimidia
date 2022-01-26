@@ -7,10 +7,7 @@
 				<simpleCondition role="onEnd"/>
 				<simpleAction role="start"/>
 			</causalConnector>
-			<causalConnector id="onBeginStart">
-				<simpleAction role="start"/>
-				<simpleCondition role="onBegin"/>
-			</causalConnector>
+
 			<causalConnector id="onKeySelectionStartStopAbort">
 				<connectorParam name="keyCode"/>
 				<simpleCondition role="onSelection" key="$keyCode"/>
@@ -20,31 +17,36 @@
 				</compoundAction>
 			</causalConnector>
 		</connectorBase>
+
 		<regionBase id="regionBase1">
 			<region id="regionVideo" left="0.00%" top="0.00%" width="100.00%" height="100.00%" zIndex="1"/>
 			<region id="regionButton" left="88.00%" top="3.00%" width="10.00%" height="10.00%" zIndex="2"/>
 			<region id="regionPage" left="25.00%" top="25.00%" width="50.00%" height="50.00%" zIndex="2"/>
 		</regionBase>
+
 		<descriptorBase id="descriptorBase1">
-			<descriptor id="dscVideo1" region="regionVideo"/>
-			<descriptor id="dscRedButton" region="regionButton"/>
-			<descriptor id="dscGreenButton" region="regionPage"/>
-			<descriptor id="dscYellowButton" region="regionPage"/>
-			<descriptor id="dscBlueButton" region="regionPage"/>
+			<descriptor id="descriptorVideo1" region="regionVideo"/>
+			<descriptor id="descriptorRedButton" region="regionButton"/>
+			<descriptor id="descriptorGreenButton" region="regionPage"/>
+			<descriptor id="descriptorYellowButton" region="regionPage"/>
+			<descriptor id="descriptorBlueButton" region="regionPage"/>
 		</descriptorBase>
 	</head>
 	<body id="myBodyID">
-		<media id="mediaVideo" src="media/video1.mpg" type="video/mpeg" descriptor="dscVideo1"/>
-		<media id="mediaRedButton" src="media/interat.gif" type="image/gif" descriptor="dscRedButton"/>
-		<media id="mediaPage1" src="media/Pagina1.gif" type="image/gif" descriptor="dscGreenButton"/>
-		<media id="mediaPage2" src="media/Pagina2.gif" type="image/gif" descriptor="dscYellowButton"/>
-		<media id="mediaPage3" src="media/Pagina3.gif" type="image/gif" descriptor="dscBlueButton"/>
-		<port id="port1" component="mediaVideo"/>
+		<media id="mediaVideo1" src="media/video1.mpg" type="video/mpeg" descriptor="descriptorVideo1"/>
+		<media id="mediaRedButton" src="media/interat.gif" type="image/gif" descriptor="descriptorRedButton"/>
+		<media id="mediaPage1" src="media/Pagina1.gif" type="image/gif" descriptor="descriptorGreenButton"/>
+		<media id="mediaPage2" src="media/Pagina2.gif" type="image/gif" descriptor="descriptorYellowButton"/>
+		<media id="mediaPage3" src="media/Pagina3.gif" type="image/gif" descriptor="descriptorBlueButton"/>
+
+		<port id="port1" component="mediaVideo1"/>
 		<port id="port2" component="mediaRedButton"/>
+
 		<link id="linkLoopVideo" xconnector="onEndStart">
-			<bind role="onEnd" component="mediaVideo"/>
-			<bind role="start" component="mediaVideo"/>
+			<bind role="onEnd" component="mediaVideo1"/>
+			<bind role="start" component="mediaVideo1"/>
 		</link>
+
 		<link id="linkRedButtonEvent" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaRedButton">
 				<bindParam name="keyCode" value="RED"/>
@@ -52,6 +54,7 @@
 			<bind role="stop" component="mediaRedButton"/>
 			<bind role="start" component="mediaPage1"/>
 		</link>
+
 		<link id="onClickGreenPage1" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage1">
 				<bindParam name="keyCode" value="GREEN"/>
@@ -59,6 +62,7 @@
 			<bind role="stop" component="mediaPage1"/>
 			<bind role="start" component="mediaPage2"/>
 		</link>
+
 		<link id="onClickBluePage1" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage1">
 				<bindParam name="keyCode" value="BLUE"/>
@@ -66,6 +70,7 @@
 			<bind role="stop" component="mediaPage1"/>
 			<bind role="start" component="mediaRedButton"/>
 		</link>
+
 		<link id="onClickGreenPage2" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage2">
 				<bindParam name="keyCode" value="GREEN"/>
@@ -73,6 +78,7 @@
 			<bind role="stop" component="mediaPage2"/>
 			<bind role="start" component="mediaPage3"/>
 		</link>
+
 		<link id="onClickYellowPage2" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage2">
 				<bindParam name="keyCode" value="YELLOW"/>
@@ -80,6 +86,7 @@
 			<bind role="stop" component="mediaPage2"/>
 			<bind role="start" component="mediaPage1"/>
 		</link>
+
 		<link id="onClickBluePage2" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage2">
 				<bindParam name="keyCode" value="BLUE"/>
@@ -87,6 +94,7 @@
 			<bind role="stop" component="mediaPage2"/>
 			<bind role="start" component="mediaRedButton"/>
 		</link>
+
 		<link id="onClickYellowPage3" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage3">
 				<bindParam name="keyCode" value="YELLOW"/>
@@ -94,6 +102,7 @@
 			<bind role="stop" component="mediaPage3"/>
 			<bind role="start" component="mediaPage2"/>
 		</link>
+
 		<link id="onClickBluePage3" xconnector="onKeySelectionStartStopAbort">
 			<bind role="onSelection" component="mediaPage3">
 				<bindParam name="keyCode" value="BLUE"/>
