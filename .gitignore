@@ -280,3 +280,6 @@ TSWLatexianTemp*
 
 # java
 *.class
+
+# ncl
+*.cpr~
